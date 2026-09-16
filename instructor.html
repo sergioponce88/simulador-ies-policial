@@ -3,98 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Centro de Comando Docente - En Vivo - IES Policial</title>
+    <title>Centro de Comando Docente - IES Policial</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ajustes específicos para pantallas chicas de celular */
+        body {
+            margin: 0;
+            padding: 10px;
+            background-color: #030712;
+            color: #f8fafc;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .tactical-container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(51, 65, 85, 0.6);
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+        .institucional-logos {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .inst-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        .header-titles h1 {
+            font-size: 14px;
+            margin: 0;
+            color: #38bdf8;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .header-titles p {
+            font-size: 10px;
+            margin: 2px 0 0 0;
+            color: #94a3b8;
+            text-align: center;
+        }
+        /* Tablas responsivas */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            min-width: 500px;
+            border-collapse: collapse;
+            font-size: 11px;
+            text-align: left;
+        }
+        th, td {
+            padding: 8px 6px;
+        }
+        .btn-tactical-3d {
+            width: 100%;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin-top: 10px;
+        }
+        .btn-back-3d {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 10px;
+            cursor: pointer;
+        }
+        .scenario-box {
+            background: rgba(2, 6, 23, 0.7);
+            border: 1px solid #334155;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
-
-    <div class="tactical-container" style="max-width: 1000px;">
+    <div class="tactical-container">
         <!-- HEADER DEL INSTRUCTOR -->
         <header class="tactical-header glass-panel">
             <div class="institucional-logos">
-                <img src="LOGOPOLICIA.png" alt="Policía de Tucumán" class="inst-logo">
+                <img src="LOGOPOLICIA.png" alt="Policía" class="inst-logo">
                 <div class="header-titles">
-                    <h1>Centro de Comando Docente - En Vivo</h1>
-                    <p>Monitoreo de Decisiones y Criterio Sumarial - Parque 9 de Julio</p>
+                    <h1>Centro de Comando Docente</h1>
+                    <p>Monitoreo en Vivo - Parque 9 de Julio</p>
                 </div>
-                <img src="LOGOIESP.png" alt="IES Policial" class="inst-logo">
+                <img src="LOGOIESP.png" alt="IESP" class="inst-logo">
             </div>
         </header>
 
-        <!-- PANEL DE ESTADÍSTICAS GLOBALES Y BOTÓN DE ACCIÓN RÁPIDA -->
+        <!-- PANEL DE ESTADÍSTICAS -->
         <section class="tactical-card glass-panel">
-            <h2>📊 Estado Operativo de Terreno</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
-                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
-                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Células Activas</span>
-                    <h3 id="stat-activas" style="font-size: 22px; color: #38bdf8; margin-top: 5px;">0 / 15</h3>
+            <h2 style="font-size: 13px; margin: 0 0 10px 0; color: #38bdf8;">📊 Estado Operativo</h2>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; text-align: center;">
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 8px; border-radius: 6px; border: 1px solid #334155;">
+                    <span style="font-size: 9px; color: #94a3b8; display: block;">ACTIVAS</span>
+                    <strong id="stat-activas" style="font-size: 16px; color: #38bdf8;">0 / 15</strong>
                 </div>
-                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
-                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Talleres Finalizados</span>
-                    <h3 id="stat-finalizados" style="font-size: 22px; color: #10b981; margin-top: 5px;">0</h3>
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 8px; border-radius: 6px; border: 1px solid #334155;">
+                    <span style="font-size: 9px; color: #94a3b8; display: block;">LISTAS</span>
+                    <strong id="stat-finalizados" style="font-size: 16px; color: #10b981;">0</strong>
                 </div>
-                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
-                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Transmisión Cloud</span>
-                    <h3 style="font-size: 13px; color: #34d399; margin-top: 8px;"><span class="led-indicator active"></span> ENLACE ACTIVO</h3>
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 8px; border-radius: 6px; border: 1px solid #334155;">
+                    <span style="font-size: 9px; color: #94a3b8; display: block;">ENLACE</span>
+                    <strong style="font-size: 11px; color: #34d399;">ONLINE</strong>
                 </div>
             </div>
 
-            <!-- BOTÓN TÁCTIL DE ACTUALIZACIÓN MANUAL PARA CELULAR -->
-            <button type="button" class="btn-tactical-3d" style="margin-top: 15px;" onclick="forzarActualizacionManual()">
-                🔄 FORZAR ACTUALIZACIÓN DE DATOS EN VIVO
+            <button type="button" class="btn-tactical-3d" onclick="forzarActualizacionManual()">
+                🔄 ACTUALIZAR DATOS EN VIVO
             </button>
         </section>
 
-        <!-- MATRIZ DE SEGUIMIENTO DE SECCIONALES -->
+        <!-- MATRIZ DE SECCIONALES -->
         <section class="tactical-card glass-panel">
-            <h2>📡 Matriz de Monitoreo de Seccionales</h2>
-            <p class="desc-text">Visualización en tiempo real del progreso de las células operativas desde Google Sheets:</p>
+            <h2 style="font-size: 13px; margin: 0 0 5px 0; color: #38bdf8;">📡 Matriz de Seccionales</h2>
+            <p style="font-size: 10px; color: #94a3b8; margin: 0 0 10px 0;">Deslice horizontalmente para ver el detalle de cada bloque:</p>
 
-            <div style="overflow-x: auto; margin-top: 15px; max-height: 420px; overflow-y: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+            <div class="table-responsive">
+                <table>
                     <thead>
-                        <tr style="border-bottom: 2px solid #334155; color: #38bdf8; position: sticky; top: 0; background: #0f172a;">
-                            <th style="padding: 10px;">Dependencia / Oficial a Cargo</th>
-                            <th style="padding: 10px; text-align: center;">Bloque 1</th>
-                            <th style="padding: 10px; text-align: center;">Bloque 2</th>
-                            <th style="padding: 10px; text-align: center;">Bloque 3</th>
-                            <th style="padding: 10px; text-align: center;">Bloque 4</th>
-                            <th style="padding: 10px; text-align: center;">Acción Docente</th>
+                        <tr style="border-bottom: 2px solid #334155; color: #38bdf8;">
+                            <th>Dependencia / Jefe</th>
+                            <th style="text-align: center;">Mod</th>
+                            <th style="text-align: center;">Aciertos</th>
+                            <th style="text-align: center;">Errores</th>
+                            <th style="text-align: center;">Dictamen</th>
+                            <th style="text-align: center;">Acción</th>
                         </tr>
                     </thead>
                     <tbody id="live-table-body">
-                        <!-- Inyectado dinámicamente por app.js -->
+                        <!-- Poblado por app.js -->
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- PANEL DE ANÁLISIS TÁCTICO DE RESPUESTAS -->
+        <!-- VISOR DE DICTAMEN TÉCNICO-LEGAL -->
         <section class="tactical-card glass-panel">
-            <h2>🔍 Análisis en Vivo de Decisiones y Opciones</h2>
-            <div class="scenario-box" id="live-analysis-box" style="min-height: 100px;">
-                Seleccione una célula en la matriz superior para inspeccionar las decisiones tácticas registradas por los cadetes en la nube.
+            <h2 style="font-size: 13px; margin: 0 0 8px 0; color: #38bdf8;">🔍 Dictamen Jurídico y Pericial</h2>
+            <div class="scenario-box" id="live-analysis-box">
+                Seleccione una dependencia de la matriz superior para inspeccionar el dictamen técnico-legal y los riesgos procesales.
             </div>
         </section>
     </div>
 
     <script src="app.js"></script>
     <script>
-        // Función específica para el botón manual del instructor en celular
         function forzarActualizacionManual() {
             const btn = document.querySelector('.btn-tactical-3d');
-            originalText = btn.innerHTML;
-            btn.innerHTML = "⏳ SINCRONIZANDO CON LA NUBE...";
-            
+            let originalText = btn.innerHTML;
+            btn.innerHTML = "⏳ ACTUALIZANDO...";
             if(typeof actualizarMonitoreoEnVivo === 'function') {
                 actualizarMonitoreoEnVivo();
             }
-            
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-            }, 800);
+            setTimeout(() => { btn.innerHTML = originalText; }, 800);
         }
     </script>
 </body>
