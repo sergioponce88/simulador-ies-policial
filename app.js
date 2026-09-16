@@ -1,7 +1,7 @@
 let sesion = { comisaria: "", jefe: "", puntaje: 100, completados: [] };
 
-// URL DE TU PROYECTO EN LA NUBE (GOOGLE APPS SCRIPT)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwnDP7nyUK0ydxwRYpYIDITuWZecaFdFIAk5wW_1A5E9FCffEzxoBs5kPnEg5XuFD1E/exec";
+// NUEVA URL DE TU PROYECTO EN LA NUBE (GOOGLE APPS SCRIPT)
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRxjPLtF55uJqkpYWRQlMM8VGtCil9P9TWXJh4ut27fyvP7s9-_9BQbTv3SNczE24/exec";
 
 // NÓMINA OFICIAL PURA - IES POLICIAL
 const nominaDependencias = [
@@ -350,10 +350,13 @@ function actualizarMonitoreoEnVivo() {
     if(!tbody) return;
 
     if (GOOGLE_SCRIPT_URL) {
-        fetch(GOOGLE_SCRIPT_URL + "?action=get_data")
+        fetch(GOOGLE_SCRIPT_URL + "?action=get_data", { method: "GET", mode: "cors" })
             .then(response => response.json())
             .then(data => procesarDatosAuditoriaJuridica(data))
-            .catch(err => procesarDatosLocalesAuditoria());
+            .catch(err => {
+                console.log("Error leyendo nube, usando local:", err);
+                procesarDatosLocalesAuditoria();
+            });
     } else {
         procesarDatosLocalesAuditoria();
     }
@@ -408,16 +411,16 @@ function procesarDatosAuditoriaJuridica(registrosNube) {
         let tr = document.createElement('tr');
         tr.style.borderBottom = "1px solid rgba(51, 65, 85, 0.4)";
         tr.innerHTML = `
-            <td style="padding: 12px; color: #f8fafc;">
+            <td style="padding: 10px 6px; color: #f8fafc;">
                 <strong>${dep.split('(')[0]}</strong><br>
                 <small style="color: #94a3b8;">Jefe: ${jefeStr}</small>
             </td>
-            <td style="padding: 12px; text-align: center;">${modulosCompletados.length}/4</td>
-            <td style="padding: 12px; text-align: center; color: #38bdf8; font-weight: bold;">${totalAciertos}</td>
-            <td style="padding: 12px; text-align: center; color: #ef4444; font-weight: bold;">${totalTrampas}</td>
-            <td style="padding: 12px; text-align: center;">${estadoLegalHTML}</td>
-            <td style="padding: 12px; text-align: center;">
-                <button class="btn-back-3d" style="margin: 0; padding: 5px 10px; font-size: 10px;" onclick='inspeccionarInformePericial(${JSON.stringify(registrosDep)}, "${dep}")'>Inspeccionar</button>
+            <td style="padding: 10px 6px; text-align: center;">${modulosCompletados.length}/4</td>
+            <td style="padding: 10px 6px; text-align: center; color: #38bdf8; font-weight: bold;">${totalAciertos}</td>
+            <td style="padding: 10px 6px; text-align: center; color: #ef4444; font-weight: bold;">${totalTrampas}</td>
+            <td style="padding: 10px 6px; text-align: center;">${estadoLegalHTML}</td>
+            <td style="padding: 10px 6px; text-align: center;">
+                <button class="btn-back-3d" style="margin: 0; padding: 5px 8px; font-size: 10px;" onclick='inspeccionarInformePericial(${JSON.stringify(registrosDep)}, "${dep}")'>Ver</button>
             </td>
         `;
         tbody.appendChild(tr);
@@ -435,7 +438,7 @@ function procesarDatosLocalesAuditoria() {
     tbody.innerHTML = "";
     nominaDependencias.forEach((dep) => {
         let tr = document.createElement('tr');
-        tr.innerHTML = `<td style="padding:12px; color:#fff;">${dep.split('(')[0]}</td><td colspan="5" style="color:#94a3b8; text-align:center;">Modo local offline</td>`;
+        tr.innerHTML = `<td style="padding:10px; color:#fff;">${dep.split('(')[0]}</td><td colspan="5" style="color:#94a3b8; text-align:center;">Modo local offline</td>`;
         tbody.appendChild(tr);
     });
 }
