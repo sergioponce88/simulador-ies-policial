@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Comando en Vivo - Instructores IES Policial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Centro de Comando Docente - En Vivo - IES Policial</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,10 +23,10 @@
             </div>
         </header>
 
-        <!-- PANEL DE ESTADÍSTICAS GLOBALES -->
+        <!-- PANEL DE ESTADÍSTICAS GLOBALES Y BOTÓN DE ACCIÓN RÁPIDA -->
         <section class="tactical-card glass-panel">
             <h2>📊 Estado Operativo de Terreno</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
                 <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
                     <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Células Activas</span>
                     <h3 id="stat-activas" style="font-size: 22px; color: #38bdf8; margin-top: 5px;">0 / 15</h3>
@@ -36,16 +36,21 @@
                     <h3 id="stat-finalizados" style="font-size: 22px; color: #10b981; margin-top: 5px;">0</h3>
                 </div>
                 <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
-                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Enlace de Transmisión</span>
-                    <h3 style="font-size: 14px; color: #34d399; margin-top: 8px;"><span class="led-indicator active"></span> SINCRONIZADO EN VIVO</h3>
+                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Transmisión Cloud</span>
+                    <h3 style="font-size: 13px; color: #34d399; margin-top: 8px;"><span class="led-indicator active"></span> ENLACE ACTIVO</h3>
                 </div>
             </div>
+
+            <!-- BOTÓN TÁCTIL DE ACTUALIZACIÓN MANUAL PARA CELULAR -->
+            <button type="button" class="btn-tactical-3d" style="margin-top: 15px;" onclick="forzarActualizacionManual()">
+                🔄 FORZAR ACTUALIZACIÓN DE DATOS EN VIVO
+            </button>
         </section>
 
-        <!-- MATRIZ DE SEGUIMIENTO EN TIEMPO REAL -->
+        <!-- MATRIZ DE SEGUIMIENTO DE SECCIONALES -->
         <section class="tactical-card glass-panel">
             <h2>📡 Matriz de Monitoreo de Seccionales</h2>
-            <p class="desc-text">El sistema actualiza automáticamente el progreso de las células operativas conectadas. Haga clic en "Inspeccionar Decisiones" para ver el detalle de los bloques:</p>
+            <p class="desc-text">Visualización en tiempo real del progreso de las células operativas desde Google Sheets:</p>
 
             <div style="overflow-x: auto; margin-top: 15px; max-height: 420px; overflow-y: auto;">
                 <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
@@ -60,7 +65,7 @@
                         </tr>
                     </thead>
                     <tbody id="live-table-body">
-                        <!-- Inyectado dinámicamente -->
+                        <!-- Inyectado dinámicamente por app.js -->
                     </tbody>
                 </table>
             </div>
@@ -68,115 +73,29 @@
 
         <!-- PANEL DE ANÁLISIS TÁCTICO DE RESPUESTAS -->
         <section class="tactical-card glass-panel">
-            <h2>🔍 Análisis en Vivo de Elecciones y Errores</h2>
+            <h2>🔍 Análisis en Vivo de Decisiones y Opciones</h2>
             <div class="scenario-box" id="live-analysis-box" style="min-height: 100px;">
-                Seleccione una célula en la matriz superior para inspeccionar en tiempo real las decisiones tácticas y opciones marcadas por los cadetes.
+                Seleccione una célula en la matriz superior para inspeccionar las decisiones tácticas registradas por los cadetes en la nube.
             </div>
         </section>
     </div>
 
+    <script src="app.js"></script>
     <script>
-        const nominaComisarias = [
-            "Comisaría Seccional 1ª (Aybar, Etchenique, Gerez, Ruiz)",
-            "Comisaría Seccional 2ª (Suárez, Valdez, Dib, Las Heras Cabocota, Montero)",
-            "Comisaría Seccional 3ª (Del Lugo F., Del Lugo G. [Ausente Med.], Ocaranza, Sotelo, Lazarte)",
-            "Comisaría Seccional 4ª (Bareiro, Palomar, Villagra, Ruiz Lozano)",
-            "Comisaría Seccional 5ª (Abregú, Medina, Rojas, Quiroga, Villalba)",
-            "Comisaría Seccional 6ª (Carrizo, Gómez, Iramain, Ybarra, Coronel)",
-            "Comisaría Seccional 7ª (Forales, Chávez, Juárez, Girvau, Fernández)",
-            "Comisaría Seccional 8ª (Mercado, Brandán, Vizcarra, Aguirre, Carrillo)",
-            "Comisaría Seccional 9ª (Argañaraz, Ávila, Bazán, Moreno)",
-            "Comisaría Seccional 10ª (Gramajo, Pintos, Verón, Frias, Soria)",
-            "Comisaría Seccional 11ª (Oliva, Salas, Díaz, Rodríguez, Zárate Medina)",
-            "Comisaría Seccional 12ª (Juárez, Alabarce, Ruiz)",
-            "Comisaría Seccional 13ª (Alvarado, Ruiz, Argañaraz Lescano, Sotelo, Quinteros)",
-            "Comisaría Seccional 14ª (Galván, Ramos, Nieva, Luna, Páez Fernández)",
-            "Comisaría Seccional 15ª (Centeno, Contreras, Guardia, Gómez Ramírez, Zamorano)"
-        ];
-
-        function actualizarMonitoreoEnVivo() {
-            const tbody = document.getElementById('live-table-body');
-            tbody.innerHTML = "";
-
-            let activasCount = 0;
-            let finalizadosCount = 0;
-
-            nominaComisarias.forEach((dep) => {
-                // Buscamos si esta comisaría tiene registros guardados en la memoria local del navegador
-                let datosSesion = JSON.parse(localStorage.getItem('sesion_' + dep)) || null;
-
-                let estadoB1 = '<span style="color: #64748b;">Sin Iniciar</span>';
-                let estadoB2 = '<span style="color: #64748b;">-</span>';
-                let estadoB3 = '<span style="color: #64748b;">-</span>';
-                let estadoB4 = '<span style="color: #64748b;">-</span>';
-                let jefeStr = "Pendiente de Enlace";
-
-                if (datosSesion) {
-                    activasCount++;
-                    jefeStr = datosSesion.jefe;
-                    if(datosSesion.completados.includes(1)) estadoB1 = '<span style="color: #34d399;">✔ Óptimo</span>';
-                    if(datosSesion.completados.includes(2)) estadoB2 = '<span style="color: #34d399;">✔ Óptimo</span>';
-                    if(datosSesion.completados.includes(3)) estadoB3 = '<span style="color: #34d399;">✔ Óptimo</span>';
-                    if(datosSesion.completados.includes(4)) {
-                        estadoB4 = '<span style="color: #34d399;">✔ Finalizado</span>';
-                        finalizadosCount++;
-                    } else if(datosSesion.completados.length > 0) {
-                        estadoB4 = '<span style="color: #f59e0b;">En Proceso</span>';
-                    }
-                }
-
-                let tr = document.createElement('tr');
-                tr.style.borderBottom = "1px solid rgba(51, 65, 85, 0.4)";
-                
-                tr.innerHTML = `
-                    <td style="padding: 12px; color: #f8fafc;">
-                        <strong>${dep.split('(')[0]}</strong><br>
-                        <small style="color: #94a3b8;">Jefe: ${jefeStr}</small>
-                    </td>
-                    <td style="padding: 12px; text-align: center;">${estadoB1}</td>
-                    <td style="padding: 12px; text-align: center;">${estadoB2}</td>
-                    <td style="padding: 12px; text-align: center;">${estadoB3}</td>
-                    <td style="padding: 12px; text-align: center;">${estadoB4}</td>
-                    <td style="padding: 12px; text-align: center;">
-                        <button class="btn-back-3d" style="margin: 0; padding: 5px 10px; font-size: 10px;" onclick='inspeccionarDetalle(${JSON.stringify(datosSesion)}, "${dep}")'>Inspeccionar</button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-
-            document.getElementById('stat-activas').innerText = `${activasCount} / 15`;
-            document.getElementById('stat-finalizados').innerText = finalizadosCount;
-        }
-
-        function inspeccionarDetalle(datos, nombreDep) {
-            const box = document.getElementById('live-analysis-box');
-            if(!datos) {
-                box.innerHTML = `<strong style="color: #f59e0b;">CÉLULA SIN ACTIVIDAD:</strong> ${nombreDep}<br><p style="margin-top: 5px; color: #94a3b8;">Este grupo aún no ha establecido enlace ni ha iniciado sesión en el simulador de campo.</p>`;
-                return;
-            }
-
-            let html = `<strong style="color: #38bdf8;">AUDITORÍA EN VIVO: ${nombreDep}</strong><br>`;
-            html += `<p style="margin-top: 4px; color: #cbd5e1;"><strong>Oficial a Cargo:</strong> ${datos.jefe}</p>`;
-            html += `<p style="margin-top: 4px; color: #34d399;"><strong>Bloques Completados:</strong> ${datos.completados.length} de 4 estaciones.</p>`;
+        // Función específica para el botón manual del instructor en celular
+        function forzarActualizacionManual() {
+            const btn = document.querySelector('.btn-tactical-3d');
+            originalText = btn.innerHTML;
+            btn.innerHTML = "⏳ SINCRONIZANDO CON LA NUBE...";
             
-            if(datos.respuestas && datos.respuestas.length > 0) {
-                html += `<p style="margin-top: 6px; color: #38bdf8;"><strong>Opciones y Decisiones Registradas por los Cadetes:</strong></p><ul style="margin-left: 15px; font-size: 11px; color: #e2e8f0; margin-top: 4px;">`;
-                datos.respuestas.forEach(r => {
-                    html += `<li>[Bloque ${r.modulo}] Ítem ID: <code>${r.opcionId}</code> - Texto: ${r.texto}</li>`;
-                });
-                html += `</ul>`;
-            } else {
-                html += `<p style="margin-top: 6px; color: #94a3b8;">El grupo está operando en los bloques pero aún no ha registrado el envío final de las opciones seleccionadas.</p>`;
+            if(typeof actualizarMonitoreoEnVivo === 'function') {
+                actualizarMonitoreoEnVivo();
             }
-
-            box.innerHTML = html;
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 800);
         }
-
-        // Refrescar automáticamente cada 3 segundos en vivo
-        setInterval(actualizarMonitoreoEnVivo, 3000);
-        
-        // Carga inicial
-        document.addEventListener("DOMContentLoaded", actualizarMonitoreoEnVivo);
     </script>
 </body>
 </html>
