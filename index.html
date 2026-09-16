@@ -3,95 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulador Táctico Avanzado - IES Policial Tucumán</title>
+    <title>Centro de Comando Docente - Auditoría Táctica IES Policial</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- EFECTO DE ILUMINACIÓN DINÁMICA DE FONDO (NEOFOTOGRAFÍA) -->
     <div class="ambient-glow"></div>
 
-    <div class="tactical-container">
-        <!-- HEADER INSTITUCIONAL CON LOS ESCUDOS .PNG -->
+    <div class="tactical-container" style="max-width: 1050px;">
+        <!-- HEADER DEL INSTRUCTOR -->
         <header class="tactical-header glass-panel">
             <div class="institucional-logos">
                 <img src="LOGOPOLICIA.png" alt="Policía de Tucumán" class="inst-logo">
                 <div class="header-titles">
-                    <h1>Primer Bloque Operativo</h1>
-                    <p>Simulador de Intervención Crítica y Criterio Sumarial</p>
+                    <h1>Centro de Comando Docente - En Vivo</h1>
+                    <p>Auditoría Jurídica y Criterio Sumarial - Parque 9 de Julio</p>
                 </div>
                 <img src="LOGOIESP.png" alt="IES Policial" class="inst-logo">
             </div>
         </header>
 
-        <!-- PANTALLA 1: REGISTRO DE CÉLULA TÁCTICA -->
-        <section id="login-section" class="tactical-card glass-panel">
-            <h2>🔐 Identificación de Célula Operativa</h2>
-            <p class="desc-text">Seleccione su dependencia asignada e ingrese el legajo del oficial a cargo para el despliegue en el Parque 9 de Julio.</p>
-            
-            <form id="login-form">
-                <label for="comisaria">Dependencia / Comisaría Asignada:</label>
-                <select id="comisaria" class="tactical-input" required>
-                    <option value="">-- Sincronizando Dependencias Oficiales --</option>
-                </select>
-
-                <label for="jefe">Oficial a Cargo (Jefe de Célula):</label>
-                <input type="text" id="jefe" class="tactical-input" placeholder="Ej: Oficial Subayudante Pérez" required>
-
-                <button type="submit" class="btn-tactical-3d">
-                    <span class="led-indicator"></span> 📡 ESTABLECER ENLACE Y DESPLEGAR
-                </button>
-            </form>
-        </section>
-
-        <!-- PANTALLA 2: DASHBOARD DEL BLOQUE (BOTONES TÁCTILES GIGANTES 3D) -->
-        <section id="dashboard-section" class="tactical-card glass-panel hidden">
-            <div class="user-status-bar">
-                <span>📍 <strong id="display-comisaria"></strong></span>
-                <span>👤 <span id="display-jefe"></span></span>
-                <span class="status-badge"><span class="led-indicator active"></span> EN TERRENO</span>
+        <!-- PANEL DE ESTADÍSTICAS Y BOTÓN TÁCTIL -->
+        <section class="tactical-card glass-panel">
+            <h2>📊 Estado Operativo de Terreno</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
+                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Células en Terreno</span>
+                    <h3 id="stat-activas" style="font-size: 22px; color: #38bdf8; margin-top: 5px;">0 / 15</h3>
+                </div>
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
+                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Talleres Finalizados</span>
+                    <h3 id="stat-finalizados" style="font-size: 22px; color: #10b981; margin-top: 5px;">0</h3>
+                </div>
+                <div style="background: rgba(2, 6, 23, 0.6); padding: 15px; border-radius: 8px; border: 1px solid #334155; text-align: center;">
+                    <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase;">Enlace Cloud</span>
+                    <h3 style="font-size: 13px; color: #34d399; margin-top: 8px;"><span class="led-indicator active"></span> SINCRONIZADO</h3>
+                </div>
             </div>
 
-            <h2>Panel de Estaciones Tácticas</h2>
-            <p class="desc-text">Seleccione la estación de intervención correspondiente al primer bloque:</p>
+            <!-- BOTÓN TÁCTIL DE ACTUALIZACIÓN MANUAL -->
+            <button type="button" class="btn-tactical-3d" style="margin-top: 15px;" onclick="forzarActualizacionManual()">
+                🔄 FORZAR ACTUALIZACIÓN DE DATOS EN VIVO
+            </button>
+        </section>
 
-            <div class="grid-stations">
-                <button class="station-btn-giant" id="btn-mod-1" onclick="abrirModulo(1)">
-                    <div class="station-led"></div>
-                    <span class="st-num">ESTACIÓN 01</span>
-                    <span class="st-title">Arribo, Perímetro y Control de Masas</span>
-                </button>
-                <button class="station-btn-giant" id="btn-mod-2" onclick="abrirModulo(2)">
-                    <div class="station-led"></div>
-                    <span class="st-num">ESTACIÓN 02</span>
-                    <span class="st-title">Investigación Activa y Testigos Dubitativos</span>
-                </button>
-                <button class="station-btn-giant" id="btn-mod-3" onclick="abrirModulo(3)">
-                    <div class="station-led"></div>
-                    <span class="st-num">ESTACIÓN 03</span>
-                    <span class="st-title">Fijación de Condiciones y Espacio Gris</span>
-                </button>
-                <button class="station-btn-giant" id="btn-mod-4" onclick="abrirModulo(4)">
-                    <div class="station-led"></div>
-                    <span class="st-num">ESTACIÓN 04</span>
-                    <span class="st-title">Rigor Procesal y Trampas Sumariales</span>
-                </button>
+        <!-- MATRIZ DE AUDITORÍA Y RIGOR SUMARIAL -->
+        <section class="tactical-card glass-panel">
+            <h2>📡 Matriz de Auditoría y Rigor Sumarial</h2>
+            <p class="desc-text">Monitoreo en tiempo real de las 15 seccionales. Haga clic en "Inspeccionar" para ver el dictamen técnico-legal de cada célula:</p>
+
+            <div style="overflow-x: auto; margin-top: 15px; max-height: 420px; overflow-y: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #334155; color: #38bdf8; position: sticky; top: 0; background: #0f172a;">
+                            <th style="padding: 10px;">Dependencia / Oficial a Cargo</th>
+                            <th style="padding: 10px; text-align: center;">Módulos</th>
+                            <th style="padding: 10px; text-align: center;">Aciertos</th>
+                            <th style="padding: 10px; text-align: center;">Errores/Trampas</th>
+                            <th style="padding: 10px; text-align: center;">Dictamen Legal</th>
+                            <th style="padding: 10px; text-align: center;">Acción Docente</th>
+                        </tr>
+                    </thead>
+                    <tbody id="live-table-body">
+                        <!-- Inyectado dinámicamente por app.js -->
+                    </tbody>
+                </table>
             </div>
         </section>
 
-        <!-- PANTALLA 3: VISTA DE ESTACIÓN / MÓDULO -->
-        <section id="station-modal" class="tactical-card glass-panel hidden">
-            <button class="btn-back-3d" onclick="volverDashboard()">⬅ Volver al Panel General</button>
-            <h2 id="mod-title" class="station-header-title"></h2>
-            <div id="mod-body"></div>
+        <!-- PANEL DE ANÁLISIS JURÍDICO Y PERICIAL -->
+        <section class="tactical-card glass-panel">
+            <h2>🔍 Dictamen Técnico-Legal y Pericial (Visor de Criterio)</h2>
+            <div class="scenario-box" id="live-analysis-box" style="min-height: 120px;">
+                Seleccione una célula en la matriz superior para inspeccionar el análisis detallado de sus decisiones y el riesgo procesal en tribunales.
+            </div>
         </section>
     </div>
 
-    <!-- CANALES DE AUDIO INMERSIVO -->
-    <audio id="sirena-audio" src="https://actions.google.com/sounds/v1/vehicles/police_car_whine_far_01.ogg"></audio>
-    <audio id="radio-audio" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
-    <audio id="beep-tactico" src="https://actions.google.com/sounds/v1/ui/button_click.ogg"></audio>
-
+    <!-- SCRIPT MAESTRO UNIFICADO -->
     <script src="app.js"></script>
+    <script>
+        // Función de apoyo para forzar actualización manual desde el celular
+        function forzarActualizacionManual() {
+            const btn = document.querySelector('.btn-tactical-3d');
+            let originalText = btn.innerHTML;
+            btn.innerHTML = "⏳ CONSULTANDO NUBE...";
+            
+            if(typeof actualizarMonitoreoEnVivo === 'function') {
+                actualizarMonitoreoEnVivo();
+            }
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 800);
+        }
+    </script>
 </body>
 </html>
