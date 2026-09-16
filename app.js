@@ -1,6 +1,6 @@
 let sesion = { comisaria: "", jefe: "", puntaje: 100, completados: [] };
 
-// NUEVA URL DE TU PROYECTO EN LA NUBE (GOOGLE APPS SCRIPT)
+// URL DE TU PROYECTO EN LA NUBE (GOOGLE APPS SCRIPT)
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRxjPLtF55uJqkpYWRQlMM8VGtCil9P9TWXJh4ut27fyvP7s9-_9BQbTv3SNczE24/exec";
 
 // NÓMINA OFICIAL PURA - IES POLICIAL
@@ -399,7 +399,9 @@ function procesarDatosAuditoriaJuridica(registrosNube) {
 
         let estadoLegalHTML = '<span style="color: #64748b;">Sin Actividad</span>';
         if(registrosDep.length > 0) {
-            if(totalTrampas === 0) {
+            if (totalAciertos === 0 && totalTrampas === 0) {
+                estadoLegalHTML = '<span style="color: #f59e0b; font-weight: bold;">⚠ Sin Datos</span>';
+            } else if(totalTrampas === 0) {
                 estadoLegalHTML = '<span style="color: #10b981; font-weight: bold;">✔ Riguroso</span>';
             } else if(totalTrampas <= 2) {
                 estadoLegalHTML = '<span style="color: #f59e0b; font-weight: bold;">⚠ Desvíos</span>';
@@ -493,7 +495,12 @@ function inspeccionarInformePericial(registros, nombreDep) {
     let estadoTitulo = "PROCEDIMIENTO SÓLIDO (APTO)";
     let dictamenTexto = "El grupo aplicó correctamente las pautas de oro procesales. La escena se preservó conforme a derecho y el sumario resistirá cualquier planteo de nulidad en tribunales.";
 
-    if(trampasTotales > 0 && trampasTotales <= 2) {
+    if (aciertosTotales === 0 && trampasTotales === 0) {
+        badgeColor = "#f59e0b";
+        badgeBg = "rgba(245, 158, 11, 0.1)";
+        estadoTitulo = "SIN OPCIONES TILDADAS (INCOMPLETO)";
+        dictamenTexto = "El registro llegó vacío o sin opciones marcadas desde el dispositivo del cadete. Debe reevaluar el bloque.";
+    } else if(trampasTotales > 0 && trampasTotales <= 2) {
         badgeColor = "#f59e0b";
         badgeBg = "rgba(245, 158, 11, 0.1)";
         estadoTitulo = "DESVÍOS MENORES (REQUIERE CORRECCIÓN)";
