@@ -6,7 +6,6 @@
     <title>Primer Bloque Operativo - Simulador IES Policial</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Ajustes específicos para rendimiento y visualización móvil */
         body {
             margin: 0;
             padding: 10px;
@@ -147,7 +146,7 @@
 </head>
 <body>
 
-    <!-- EFECTOS DE AUDIO Y AMBIENTE -->
+    <!-- EFECTOS DE AUDIO -->
     <audio id="sirena-audio" src="https://actions.google.com/sounds/v1/alarms/emergency_sirens_short.ogg"></audio>
     <audio id="beep-tactico" src="https://actions.google.com/sounds/v1/ui/button_click.ogg"></audio>
 
@@ -174,7 +173,7 @@
                 <div class="form-group">
                     <label for="comisaria">Dependencia / Comisaría Asignada:</label>
                     <select id="comisaria" required>
-                        <!-- Inyectado por app.js -->
+                        <!-- Inyectado dinámicamente por app.js -->
                     </select>
                 </div>
 
@@ -233,7 +232,6 @@
 
     </div>
 
-    <!-- SCRIPT DE CONTROL -->
     <script src="app.js"></script>
 </body>
 </html>
