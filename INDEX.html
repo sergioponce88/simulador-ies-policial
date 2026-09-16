@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simulador Táctico Avanzado - IES Policial Tucumán</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- EFECTO DE ILUMINACIÓN DINÁMICA DE FONDO (NEOFOTOGRAFÍA) -->
+    <div class="ambient-glow"></div>
+
+    <div class="tactical-container">
+        <!-- HEADER INSTITUCIONAL CON LOS ESCUDOS .PNG -->
+        <header class="tactical-header glass-panel">
+            <div class="institucional-logos">
+                <img src="LOGOPOLICIA.png" alt="Policía de Tucumán" class="inst-logo">
+                <div class="header-titles">
+                    <h1>Primer Bloque Operativo</h1>
+                    <p>Simulador de Intervención Crítica y Criterio Sumarial</p>
+                </div>
+                <img src="LOGOIESP.png" alt="IES Policial" class="inst-logo">
+            </div>
+        </header>
+
+        <!-- PANTALLA 1: REGISTRO DE CÉLULA TÁCTICA -->
+        <section id="login-section" class="tactical-card glass-panel">
+            <h2>🔐 Identificación de Célula Operativa</h2>
+            <p class="desc-text">Seleccione su dependencia asignada e ingrese el legajo del oficial a cargo para el despliegue en el Parque 9 de Julio.</p>
+            
+            <form id="login-form">
+                <label for="comisaria">Dependencia / Comisaría Asignada:</label>
+                <select id="comisaria" class="tactical-input" required>
+                    <option value="">-- Sincronizando Dependencias Oficiales --</option>
+                </select>
+
+                <label for="jefe">Oficial a Cargo (Jefe de Célula):</label>
+                <input type="text" id="jefe" class="tactical-input" placeholder="Ej: Oficial Subayudante Pérez" required>
+
+                <button type="submit" class="btn-tactical-3d">
+                    <span class="led-indicator"></span> 📡 ESTABLECER ENLACE Y DESPLEGAR
+                </button>
+            </form>
+        </section>
+
+        <!-- PANTALLA 2: DASHBOARD DEL BLOQUE (BOTONES TÁCTILES GIGANTES 3D) -->
+        <section id="dashboard-section" class="tactical-card glass-panel hidden">
+            <div class="user-status-bar">
+                <span>📍 <strong id="display-comisaria"></strong></span>
+                <span>👤 <span id="display-jefe"></span></span>
+                <span class="status-badge"><span class="led-indicator active"></span> EN TERRENO</span>
+            </div>
+
+            <h2>Panel de Estaciones Tácticas</h2>
+            <p class="desc-text">Seleccione la estación de intervención correspondiente al primer bloque:</p>
+
+            <div class="grid-stations">
+                <button class="station-btn-giant" id="btn-mod-1" onclick="abrirModulo(1)">
+                    <div class="station-led"></div>
+                    <span class="st-num">ESTACIÓN 01</span>
+                    <span class="st-title">Arribo, Perímetro y Control de Masas</span>
+                </button>
+                <button class="station-btn-giant" id="btn-mod-2" onclick="abrirModulo(2)">
+                    <div class="station-led"></div>
+                    <span class="st-num">ESTACIÓN 02</span>
+                    <span class="st-title">Investigación Activa y Testigos Dubitativos</span>
+                </button>
+                <button class="station-btn-giant" id="btn-mod-3" onclick="abrirModulo(3)">
+                    <div class="station-led"></div>
+                    <span class="st-num">ESTACIÓN 03</span>
+                    <span class="st-title">Fijación de Condiciones y Espacio Gris</span>
+                </button>
+                <button class="station-btn-giant" id="btn-mod-4" onclick="abrirModulo(4)">
+                    <div class="station-led"></div>
+                    <span class="st-num">ESTACIÓN 04</span>
+                    <span class="st-title">Rigor Procesal y Trampas Sumariales</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- PANTALLA 3: VISTA DE ESTACIÓN / MÓDULO -->
+        <section id="station-modal" class="tactical-card glass-panel hidden">
+            <button class="btn-back-3d" onclick="volverDashboard()">⬅ Volver al Panel General</button>
+            <h2 id="mod-title" class="station-header-title"></h2>
+            <div id="mod-body"></div>
+        </section>
+    </div>
+
+    <!-- CANALES DE AUDIO INMERSIVO -->
+    <audio id="sirena-audio" src="https://actions.google.com/sounds/v1/vehicles/police_car_whine_far_01.ogg"></audio>
+    <audio id="radio-audio" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+    <audio id="beep-tactico" src="https://actions.google.com/sounds/v1/ui/button_click.ogg"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
