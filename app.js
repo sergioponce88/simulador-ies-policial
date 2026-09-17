@@ -130,7 +130,7 @@ const modulosData = {
             { id: '2_12', tipo: 'acierto', texto: "Asegurar los dispositivos electrónicos detectados sin manipular sus interfaces, disponiendo su aislamiento en bolsas faraday o apagándolos únicamente bajo directiva técnica.", fundacion: "Correcto resguardo técnico de evidencia digital sin vulneración de sistemas informáticos." },
             { id: '2_13', tipo: 'trampa', texto: "Seleccionar como testigos instrumentales de actuación a personas vinculadas orgánicamente con la dependencia policial interviniente.", fundacion: "Falta de imparcialidad de los testigos de actuación, causal de nulidad del acta." },
             { id: '2_14', tipo: 'acierto', texto: "Documentar minuciosamente las contradicciones manifiestas entre los distintos relatos de los mirones para someterlas a posterior análisis pericial.", fundacion: "Registro objetivo de discordancias testimoniales para evaluación del fiscal." },
-            { id: '2_15', tipo: 'trampa', texto: "Obligar a los testigos presenciales a firmar actas pre-redactadas en la comisaría sin haber presenciado su confección en el lugar.", falsedad: "Falsedad ideológica y violación de las normas de confección de instrumentos públicos." },
+            { id: '2_15', tipo: 'trampa', texto: "Obligar a los testigos presenciales a firmar actas pre-redactadas en la comisaría sin haber presenciado su confección en el lugar.", fundacion: "Falsedad ideológica y violación de las normas de confección de instrumentos públicos." },
             { id: '2_16', tipo: 'acierto', texto: "Verificar la existencia de cámaras de comercios aledaños entrevistando directamente a los encargados de seguridad privada.", fundacion: "Acciones ágiles de relevamiento tecnológico periférico." }
         ]
     },
@@ -157,25 +157,25 @@ const modulosData = {
         ]
     },
     4: {
-        titulo: "Módulo 4: Rigor Procesal y Trampas Sumariales",
-        instruccion: "Para blindar el procedimiento ante los planteos de la defensa técnica en tribunales, marque <u>todas</u> las exigencias sumariales correctas:",
+        titulo: "Módulo 4: Intervención Correcta del Lugar del Ilícito, Actuaciones y Trazabilidad",
+        instruccion: "Frente a un hecho de sangre con persona fallecida y vehículo con numeración aparentemente adulterada, determine las diligencias procesales, periciales y sumariales correctas y descarte las trampas sutiles:",
         opciones: [
-            { id: '4_1', tipo: 'acierto', texto: "Subordinar cada medida a los límites procesales entre las facultades de prevención y los actos de investigación exclusivos de la fiscalía.", fundacion: "Acatamiento estricto de la división de roles procesales entre policía y fiscalía." },
-            { id: '4_2', tipo: 'trampa', texto: "Avanzar en una carátula definitiva de homicidio por ajuste de cuentas en el acta inicial para demostrar eficacia investigativa.", fundacion: "Exceso funcional. La calificación legal es atribución exclusiva del Ministerio Público Fiscal y el juez." },
-            { id: '4_3', tipo: 'acierto', texto: "Confeccionar el acta de prevención respetando la normativa legal e incluyendo la designación fehaciente de testigos hábiles de actuación.", fundacion: "Instrumento público formalmente válido y blindado ante planteos de nulidad." },
-            { id: '4_4', tipo: 'acierto', texto: "Salvar formalmente de puño y letra cualquier enmienda, testadura o interlineado realizado durante la confección manuscrita de las actuaciones.", fundacion: "Cumplimiento de recaudos formales esenciales para evitar sospechas de adulteración documental." },
-            { id: '4_5', tipo: 'trampa', texto: "Dejar que el personal subalterno actúe por intuición sin supervisar las directivas legales impartidas en el lugar de los hechos.", fundacion: "Falta de mando y control operativo, generando caos en la actuación sumarial." },
-            { id: '4_6', tipo: 'trampa', texto: "Omitir la firma de los testigos instrumentales en el acta de procedimiento bajo el argumento de urgencia horaria.", fundacion: "Nulidad absoluta del instrumento público por ausencia de testigos obligatorios de ley." },
-            { id: '4_7', tipo: 'acierto', texto: "Consignar de forma clara los datos identificatorios completos de los preventores intervinientes y la autoridad judicial informada.", fundacion: "Legitimación procesal clara de los funcionarios actuantes." },
-            { id: '4_8', tipo: 'trampa', texto: "Utilizar abreviaturas confusas, términos jeróglifos o lenguaje informal no técnico en la redacción de piezas procesales públicas.", fundacion: "Defecto formal de redacción que obstaculiza la comprensión judicial del sumario." },
-            { id: '4_9', tipo: 'acierto', texto: "Asegurar la intangibilidad del documento primario evitando alteraciones o agregados posteriores fuera de término legal.", fundacion: "Integridad documental garantizada." },
-            { id: '4_10', tipo: 'trampa', texto: "Dejar el libro de actas sin cerrar ni rubricar al finalizar el procedimiento bajo custodia del preventor más moderno.", fundacion: "Vulneración de la seguridad documental interna de la dependencia." },
-            { id: '4_11', tipo: 'acierto', texto: "Transmitir a la fiscalía de turno un reporte preliminar objetivo y despojado de conjeturas subjetivas o hipótesis precipitadas sobre la autoría.", fundacion: "Informe pulcro, objetivo y centrado en los hechos constatados." },
-            { id: '4_12', tipo: 'acierto', texto: "Garantizar la lectura íntegra del acta redactada a los intervinientes y testigos antes de proceder a la rúbrica formal del instrumento.", fundacion: "Respeto al derecho de información y conformidad de los firmantes." },
-            { id: '4_13', tipo: 'trampa', texto: "Dejar espacios en blanco o renglones libres al finalizar los párrafos principales del acta para facilitar agregados posteriores si fuera necesario.", fundacion: "Trampa sumarial gravísima. Habilita el tachado, interpolación y nulidad por adulteración de documento público." },
-            { id: '4_14', tipo: 'acierto', texto: "Corroborar la coincidencia exacta entre los datos filiatorios asentados en los documentos de identidad y los plasmados en el sumario.", fundacion: "Exactitud en la filiación de personas involucradas." },
-            { id: '4_15', tipo: 'acierto', texto: "Remitir las actuaciones originales a la sede judicial dentro de los plazos legales perentorios establecidos por la normativa procesal vigente.", fundacion: "Estricto cumplimiento de los plazos procesales de remisión sumarial." },
-            { id: '4_16', tipo: 'trampa', texto: "Delegar la redacción total del sumario a personal civil ajeno a la fuerza policial sin supervisión de oficial jefe.", fundacion: "Ilegalidad en la delegación de funciones públicas esenciales de prevención." }
+            { id: '4_1', tipo: 'acierto', texto: "Constatar formalmente la ausencia de signos vitales por parte de profesional médico antes de mover cualquier elemento, perimetrar el lugar y dar inmediato aviso a la autoridad judicial competente (Fiscalía de Homicidios).", fundacion: "Cumplimiento estricto del protocolo: la verificación médica certifica el deceso y preserva la escena sin prejuzgamientos." },
+            { id: '4_2', tipo: 'trampa', texto: "Dar aviso telefónico informal al fiscal de turno relatando el suceso verbalmente y continuar las actuaciones en el terreno sin esperar la instrucción legal documentada, para no demorar la vía pública.", fundacion: "Trampa procesal sutil: la prevención debe asentar de puño y letra la comunicación, hora y directivas exactas impartidas por el órgano fiscal." },
+            { id: '4_3', tipo: 'acierto', texto: "Recabar con celeridad la información de testigos presenciales y verificar cámaras de seguridad públicas o privadas en el radio de influencia antes de que los registros se sobreescriban.", fundacion: "Adquisición oportuna de prueba volátil indispensable para la teoría del caso fiscal." },
+            { id: '4_4', tipo: 'acierto', texto: "Registrar detalladamente mediante acta de procedimiento la nómina completa de autoridades y equipos que se hacen presentes (ECIF, Criminalística, Médicos, Jefaturas) consignando horarios exactos.", fundacion: "Asegura la trazabilidad y la intangibilidad del procedimiento ante planteos de intervención ilegítima." },
+            { id: '4_5', tipo: 'trampa', texto: "Consignar en el acta que el médico de policía y los peritos de Criminalística arribaron 'aproximadamente a las 16:00 horas' para evitar discrepancias de minutos con los informes técnicos posteriores.", fundacion: "Defecto sumarial grave: la estimación laxa de horarios en instrumentos públicos es causal de nulidad por falta de certeza temporal." },
+            { id: '4_6', tipo: 'acierto', texto: "Asentar documentalmente la intervención del médico de policía, peritos de Criminalística / ECIF y personal idóneo de la División Sustracción de Automotores para la inspección técnica del rodado.", fundacion: "Integración formal y multidisciplinaria de las áreas periciales competentes según la naturaleza del hecho." },
+            { id: '4_7', tipo: 'acierto', texto: "Coordinar el levantamiento y traslado del occiso exclusivamente a través de la División Bomberos de la Policía, una vez concluidas las pericias de rigor y mediando orden expresa judicial.", fundacion: "Resguardo de la cadena de custodia cadavérica bajo el organismo policial legalmente facultado." },
+            { id: '4_8', tipo: 'trampa', texto: "Permitir que el personal preventor de la comisaría colabore levantando el cuerpo y cargándolo a la morguera si la dotación de bomberos presenta demora operativa, con el fin de descomprimir a los familiares.", fundacion: "Contaminación grave y alteración de biopatología: los preventores no deben manipular el óbito para evitar transferencia de rastros." },
+            { id: '4_9', tipo: 'acierto', texto: "Disponer el secuestro y traslado del vehículo adulterado bajo inventario riguroso, especificando la calidad procesal del secuestro y emitiendo notas de remisión sin formular hipótesis definitivas de robo.", fundacion: "Garantía de debido proceso: el rodado queda a disposición judicial como pieza de convicción sujeta a revenido químico." },
+            { id: '4_10', tipo: 'trampa', texto: "Asentar taxativamente en el acta que el vehículo resulta ser 'sustraído y de procedencia ilícita' basándose en la sola observación visual de los dígitos de chasis limados o alterados.", fundacion: "Exceso pericial preventivo: el policía de prevención no puede afirmar jurídicamente un delito registral sin peritaje revenido químico concluido." },
+            { id: '4_11', tipo: 'acierto', texto: "Garantizar la lectura íntegra del acta redactada en el lugar a los testigos hábiles de actuación antes de proceder a la rúbrica formal del instrumento público.", fundacion: "Cumplimiento del recaudo esencial de validez instrumental previsto en el Código Procesal Penal." },
+            { id: '4_12', tipo: 'trampa', texto: "Limpiar o raspar con un trapo o cepillo la zona del motor o chasis donde se observan signos de manipulación para verificar mejor la numeración antes de que llegue el perito.", fundacion: "Alteración directa de evidencia material: la fricción mecánica destruye micro-marcas y partículas de pintura útiles para el peritaje." },
+            { id: '4_13', tipo: 'acierto', texto: "Salvar formalmente de puño y letra cualquier enmienda, testadura o interlineado efectuado durante la confección manuscrita del acta sumarial antes de las firmas.", fundacion: "Preserva la fe pública del instrumento e impide planteos de falsedad ideológica o material." },
+            { id: '4_14', tipo: 'trampa', texto: "Dejar espacios en blanco o renglones libres al finalizar los párrafos principales del acta para facilitar agregados posteriores si el fiscal pide nuevas medidas.", fundacion: "Vicio sumarial grosero: habilita la sospecha de adulteración documental o interpolación de texto posterior." },
+            { id: '4_15', tipo: 'acierto', texto: "Asegurar la intangibilidad del documento primario remitiendo las actuaciones originales a sede judicial dentro de los plazos legales perentorios establecidos.", fundacion: "Acatamiento de los límites temporales procesales que legitiman la prevención." },
+            { id: '4_16', tipo: 'trampa', texto: "Delegar la redacción total del sumario a personal civil o a pasantes administrativos ajenos a la fuerza para agilizar el expediente judicial.", fundacion: "Ilegalidad en el ejercicio de funciones públicas esenciales reservadas a funcionarios de policía judicial." }
         ]
     }
 };
@@ -308,7 +308,7 @@ function mostrarPantallaFinalizacionTotal() {
     transicionSec.innerHTML = `
         <div style="text-align: center; padding: 30px 15px;">
             <div style="font-size: 45px; margin-bottom: 15px;">⚖️🎓</div>
-            <h2 style="color: #10b981; font-size: 19px; margin-bottom: 15px; text-transform: uppercase;">Taller práctico en la escena de un crimen finalizado</h2>
+            <h2 style="color: #10b981; font-size: 19px; margin-bottom: 15px; text-transform: uppercase;">Taller práctico finalizado</h2>
             <p class="desc-text" style="font-size: 13px; line-height: 1.6; color: #e2e8f0; margin-bottom: 20px;">
                 La célula operativa ha completado de forma íntegra los cuatro bloques de intervención pericial y sumarial en el Parque 9 de Julio.
             </p>
@@ -322,7 +322,6 @@ function mostrarPantallaFinalizacionTotal() {
             </p>
         </div>
     `;
-    transicionSec.classList.min?.('hidden');
     transicionSec.classList.remove('hidden');
 }
 
@@ -480,7 +479,6 @@ function inspeccionarInformePericial(registros, nombreDep) {
             itemsDetalleHTML = `<p style="color: #f59e0b; font-size: 11px; margin: 5px 0;">No se registraron selecciones en este bloque operativo.</p>`;
         } else {
             respArr.forEach(r => {
-                // Buscamos la fundamentación pericial exacta en nuestro banco maestro
                 let modNum = reg.modulo.replace(/[^0-9]/g, '');
                 let infoMaestra = null;
                 if(modulosData[modNum]) {
@@ -492,7 +490,7 @@ function inspeccionarInformePericial(registros, nombreDep) {
                     itemsDetalleHTML += `
                         <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; padding: 8px; margin-bottom: 6px; border-radius: 4px;">
                             <span style="color: #ef4444; font-weight: bold; font-size: 11px; display: block;">✖ [TRAMPA PROCESAL ELEGIDA]: ${r.texto}</span>
-                            <p style="color: #cbd5e1; font-size: 11px; margin: 4px 0 0 0; line-height: 1.4;"><strong>Fundamentación Jurídica (Instructor/Abogado):</strong> ${fundacionTexto}</p>
+                            <p style="color: #cbd5e1; font-size: 11px; margin: 4px 0 0 0; line-height: 1.4;"><strong>Fundamentación Jurídica (Docente/Abogado):</strong> ${fundacionTexto}</p>
                         </div>
                     `;
                 } else {
