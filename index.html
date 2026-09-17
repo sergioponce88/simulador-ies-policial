@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Primer Bloque Operativo - Simulador IES Policial</title>
+    <title>Taller Práctico - Simulador IES Policial</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -146,40 +146,36 @@
 </head>
 <body>
 
-    <!-- EFECTOS DE AUDIO -->
     <audio id="sirena-audio" src="https://actions.google.com/sounds/v1/alarms/emergency_sirens_short.ogg"></audio>
     <audio id="beep-tactico" src="https://actions.google.com/sounds/v1/ui/button_click.ogg"></audio>
 
     <div class="tactical-container">
         
-        <!-- HEADER INSTITUCIONAL -->
         <header class="tactical-header glass-panel">
             <div class="institucional-logos">
                 <img src="LOGOPOLICIA.png" alt="Policía" class="inst-logo">
                 <div class="header-titles">
-                    <h1>Primer Bloque Operativo</h1>
-                    <p>Simulador de Intervención Crítica y Criterio Sumarial</p>
+                    <h1>Taller Práctico de Campo</h1>
+                    <p>Del Primer Interventor a la Investigación del Homicidio</p>
                 </div>
                 <img src="LOGOIESP.png" alt="IESP" class="inst-logo">
             </div>
         </header>
 
-        <!-- SECCIÓN 1: LOGIN DE CADETES -->
         <section id="login-section" class="tactical-card glass-panel">
             <h2 style="font-size: 13px; margin: 0 0 10px 0; color: #38bdf8;">📌 Identificación de Célula Operativa</h2>
-            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 15px;">Seleccione su dependencia asignada e ingrese el legajo del oficial a cargo para el despliegue en el Parque 9 de Julio.</p>
+            <p style="font-size: 11px; color: #94a3b8; margin-bottom: 15px;">Seleccione su dependencia asignada e ingrese el nombre/legajo del oficial a cargo para el despliegue en el Parque 9 de Julio.</p>
             
             <form id="login-form">
                 <div class="form-group">
                     <label for="comisaria">Dependencia / Comisaría Asignada:</label>
                     <select id="comisaria" required>
-                        <!-- Inyectado dinámicamente por app.js -->
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="jefe">Oficial a Cargo (Jefe de Célula):</label>
-                    <input type="text" id="jefe" placeholder="Ej: Oficial Subadjudante Pérez" required>
+                    <input type="text" id="jefe" placeholder="Ej: Oficial Subayudante Pérez" required>
                 </div>
 
                 <button type="submit" class="btn-tactical-3d">
@@ -188,15 +184,14 @@
             </form>
         </section>
 
-        <!-- SECCIÓN 2: DASHBOARD DE ESTACIONES (BLOQUES) -->
         <section id="dashboard-section" class="tactical-card glass-panel hidden">
             <div style="background: rgba(2, 6, 23, 0.6); padding: 10px; border-radius: 8px; border: 1px solid #334155; margin-bottom: 12px; font-size: 11px;">
                 <span style="color: #38bdf8; font-weight: bold;" id="display-comisaria">Dependencia</span><br>
                 <span style="color: #94a3b8;">Oficial a Cargo: <strong id="display-jefe" style="color: #fff;">Jefe</strong></span>
             </div>
 
-            <h2 style="font-size: 13px; margin: 0 0 10px 0; color: #38bdf8;">Panel de Estaciones Tácticas</h2>
-            <p style="font-size: 10px; color: #94a3b8; margin-bottom: 12px;">Seleccione la estación de intervención correspondiente al primer bloque:</p>
+            <h2 style="font-size: 13px; margin: 0 0 10px 0; color: #38bdf8;">Panel de Estaciones Operativas</h2>
+            <p style="font-size: 10px; color: #94a3b8; margin-bottom: 12px;">Seleccione la estación de intervención táctico-sumarial:</p>
 
             <button id="btn-mod-1" class="station-btn" onclick="abrirModulo(1)">
                 <h3>ESTACIÓN 01</h3>
@@ -215,18 +210,16 @@
 
             <button id="btn-mod-4" class="station-btn" onclick="abrirModulo(4)">
                 <h3>ESTACIÓN 04</h3>
-                <p>Rigor Procesal y Trampas Sumariales</p>
+                <p>Intervención del Ilícito, Actuaciones y Trazabilidad</p>
             </button>
         </section>
 
-        <!-- MODAL DE ESTACIONES / PREGUNTAS -->
         <section id="station-modal" class="tactical-card glass-panel hidden">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                 <h2 id="mod-title" style="font-size: 13px; margin: 0; color: #38bdf8;">Módulo</h2>
                 <button onclick="volverDashboard()" style="background: #334155; border: none; color: #fff; padding: 4px 8px; border-radius: 4px; font-size: 10px; cursor: pointer;">⬅ Volver</button>
             </div>
             <div id="mod-body">
-                <!-- Inyectado dinámicamente por app.js -->
             </div>
         </section>
 
