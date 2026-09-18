@@ -3,7 +3,7 @@ let sesion = { comisaria: "", jefe: "", puntaje: 100, completados: [] };
 // URL DE TU PROYECTO EN LA NUBE (GOOGLE APPS SCRIPT)
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRxjPLtF55uJqkpYWRQlMM8VGtCil9P9TWXJh4ut27fyvP7s9-_9BQbTv3SNczE24/exec";
 
-// NÓMINA OFICIAL PURA - IES POLICIAL (ACTUALIZADA CON BAJAS MÉDICAS Y ALTAS)
+// NÓMINA OFICIAL PURA - IES POLICIAL (ACTUALIZADA)
 const nominaDependencias = [
     "Comisaría Seccional 1ª (Aybar, Etchenique, Gerez, Ruiz)",
     "Comisaría Seccional 2ª (Suárez, Valdez, Dib, Las Heras Cabocota, Montero)",
@@ -16,7 +16,7 @@ const nominaDependencias = [
     "Comisaría Seccional 9ª (Argañaraz, Ávila, Bazán, Moreno, Huergo Ismael)",
     "Comisaría Seccional 10ª (Gramajo, Pintos, Verón, Frias, Soria)",
     "Comisaría Seccional 11ª (Oliva, Salas, Díaz, Zárate Medina)",
-    "Comisaría Seccional 12ª (Juárez, Alabarce, Ruiz)",
+    "Comisaría Seccional 12ª (Juárez, Alabarce, Ruiz, Paz Maria, Miro Gaston)",
     "Comisaría Seccional 13ª (Alvarado, Ruiz, Argañaraz Lescano, Sotelo, Quinteros)",
     "Comisaría Seccional 14ª (Galván, Ramos, Nieva, Páez Fernández)",
     "Comisaría Seccional 15ª (Centeno, Contreras, Guardia, Gómez Ramírez, Zamorano)"
